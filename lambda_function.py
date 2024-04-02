@@ -4,7 +4,9 @@ import urllib.request
 import urllib.parse
 
 def lambda_handler(event, context):
-    url = event['issue']['html_url']
+    body = json.loads(event['body'])
+    
+    url = body['issue']['html_url']
     payload = {
         "text": f"Issue Created: {url}"
     }
